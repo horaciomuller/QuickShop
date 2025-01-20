@@ -74,14 +74,13 @@ public class BasketService {
         List<Product> products = new ArrayList<>();
         basketRequest.getProducts().forEach(productRequest -> {
             PlatziProductReponse platziProductReponse = productService.getProduct(productRequest.getId());
-            if (platziProductReponse != null) {
-                products.add(Product.builder()
-                        .id(platziProductReponse.id())
-                        .price(platziProductReponse.price())
-                        .title(platziProductReponse.title())
-                        .quantity(productRequest.getQuantity())
-                        .build());
-            }
+            products.add(Product.builder()
+                    .id(platziProductReponse.id())
+                    .price(platziProductReponse.price())
+                    .title(platziProductReponse.title())
+                    .quantity(productRequest.getQuantity())
+                    .build());
+
         });
         return products;
     }

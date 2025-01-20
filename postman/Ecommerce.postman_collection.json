@@ -1,0 +1,182 @@
+{
+	"info": {
+		"_postman_id": "f53b9076-365f-4c85-a2d4-a9307e1c3f63",
+		"name": "Ecommerce",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6990392",
+		"_collection_link": "https://planetary-space-178208.postman.co/workspace/PanelaDev~39858e3d-d89f-4c3f-9141-c023b85c97e3/collection/6990392-f53b9076-365f-4c85-a2d4-a9307e1c3f63?action=share&source=collection_link&creator=6990392"
+	},
+	"item": [
+		{
+			"name": "Get all products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/product",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get product by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/product/9",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"product",
+						"9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create basket",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"clientId\": 10,\r\n    \"products\": [\r\n        {\r\n            \"id\": 9,\r\n            \"quantity\": 2\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/basket",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"basket"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get basket by id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"clientId\": 10,\r\n    \"products\": [\r\n        {\r\n            \"id\": 4,\r\n            \"quantity\": 2\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/basket/678d7f7e8fb9e42499f06f15",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"basket",
+						"678d7f7e8fb9e42499f06f15"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update basket by id",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"clientId\": 11,\r\n    \"products\": [\r\n        {\r\n            \"id\": 5,\r\n            \"quantity\": 2\r\n        },\r\n        {\r\n            \"id\": 7,\r\n            \"quantity\": 1\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/basket/678d7f7e8fb9e42499f06f15",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"basket",
+						"678d7f7e8fb9e42499f06f15"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Set payment method",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"paymentMethod\": \"PIX\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/basket/678d7f7e8fb9e42499f06f15/payment",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"basket",
+						"678d7f7e8fb9e42499f06f15",
+						"payment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete basket by id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/basket/sdfsdf",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"basket",
+						"sdfsdf"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
