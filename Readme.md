@@ -74,7 +74,8 @@ O projeto foi desenvolvido com as seguintes tecnologias:
 
 ## ✨ Funcionalidades
 
-- **Adicionar, Remover e Listar Produtos**: Gerencie os produtos do carrinho de forma simples.
+- **Listar Produtos**: Gerencie os produtos do carrinho de forma simples.
+- **Criar, Alterar, Pagar e Deletar**: Gerencie o carrinho de compras.
 - **Cache Inteligente**: Reduz o tempo de resposta com dados armazenados no Redis.
 - **Persistência com MongoDB**: Armazene os dados do carrinho com segurança e flexibilidade.
 - **Integração com API Externa**: Produtos são carregados diretamente de uma API confiável.
