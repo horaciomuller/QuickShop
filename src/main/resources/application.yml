@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: basket-service
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: basket-service
+    redis:
+      host: localhost
+      port: 6379
+      password: sa
+  cache:
+    redis:
+      time-to-live: 60000
+
+basket:
+  client:
+    platzi: https://api.escuelajs.co/api/v1
