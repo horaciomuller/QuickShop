@@ -7,6 +7,7 @@ import dev.java.ecommerce.basket_service.entity.Basket;
 import dev.java.ecommerce.basket_service.entity.Product;
 import dev.java.ecommerce.basket_service.entity.Status;
 import dev.java.ecommerce.basket_service.exception.BusinessException;
+import dev.java.ecommerce.basket_service.exception.DataNotFoundException;
 import dev.java.ecommerce.basket_service.repository.BasketRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -40,12 +41,11 @@ public class BasketService {
                 .build();
 
         basket.calculateTotalPrice();
-
         return basketRepository.save(basket);
     }
 
     public Basket updateBasket(String basketId, BasketRequest basketRequest) {
-        Basket basket = basketRepository.findById(basketId).orElseThrow(() -> new BusinessException("Basket not found"));
+        Basket basket = getBasket(basketId);
 
         List<Product> products = manageProductsRequest(basketRequest);
 
@@ -55,15 +55,19 @@ public class BasketService {
     }
 
     public Basket payBasket(String basketId, PaymentRequest paymentRequest) {
-        Basket basket = basketRepository.findById(basketId).orElseThrow(() -> new BusinessException("Basket not found"));
+        Basket basket = getBasket(basketId);
         basket.setPaymentMethod(paymentRequest.getPaymentMethod());
         basket.setStatus(Status.SOLD);
         return basketRepository.save(basket);
     }
 
     public void deleteBasket(String basketId) {
-        basketRepository.findById(basketId).orElseThrow(() -> new BusinessException("Basket not found"));
+        getBasket(basketId);
         basketRepository.deleteById(basketId);
+    }
+
+    private Basket getBasket(String basketId) {
+        return this.getBasketById(basketId).orElseThrow(() -> new DataNotFoundException("Basket not found"));
     }
 
     private List<Product> manageProductsRequest(BasketRequest basketRequest) {

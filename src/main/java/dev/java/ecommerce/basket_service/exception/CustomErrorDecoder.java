@@ -8,7 +8,7 @@ public class CustomErrorDecoder implements ErrorDecoder {
     public Exception decode(String methodKey, Response response) {
         switch (response.status()) {
             case 400:
-                return new BusinessException("Product Not Found");
+                return new DataNotFoundException("Product not found");
             default:
                 return new Exception("Exception while getting product");
         }

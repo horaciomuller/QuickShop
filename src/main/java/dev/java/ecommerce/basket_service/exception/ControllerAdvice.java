@@ -8,9 +8,15 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class ControllerAdvice {
 
+    @ExceptionHandler(DataNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public String handleBasketNotFoundException(DataNotFoundException ex) {
+        return ex.getMessage();
+    }
+
     @ExceptionHandler(BusinessException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public String handleNotFoundException(BusinessException ex) {
+    public String handleBasketException(BusinessException ex) {
         return ex.getMessage();
     }
 }
